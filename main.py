@@ -10,7 +10,7 @@ model_path = hf_hub_download(repo_id="MienOlle/sentiment_analysis_api",
                              filename="sentimentAnalysis.pth"
                              )
 modelToken = token.from_pretrained("mdhugol/indonesia-bert-sentiment-classification")
-model = modelSC.from_pretrained("mdhugol/indonesia-bert-sentiment-classification", num_labels=3)
+model = modelSC.from_pretrained("mdhugol/indonesia-bert-sentiment-classification", num_labels=3, torch_dtype=torch.float16)
 model.load_state_dict(torch.load(model_path, map_location=torch.device("cpu")))
 model.eval()
 
